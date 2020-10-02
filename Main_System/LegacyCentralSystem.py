@@ -51,6 +51,7 @@ class LegacyCentralSystem(object):
             
             # maybe create a new method for this and call read_csv.
             # call the method that retrieves NemID
+            print("calling retrieve_nemId")
             NemID = LegacyCentralSystem().retrieve_nemId(xmlPerson)
 
             # serialize it all in a json object and pass the json to the save_as_msgPack method to save it all

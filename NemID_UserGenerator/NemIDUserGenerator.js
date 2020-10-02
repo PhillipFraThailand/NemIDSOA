@@ -32,7 +32,6 @@ app.post('/generate-nemId', (req,res) => {
 
     idRight = req.body.cpr.slice(7,11);
     idLeft = generateRandom(1000,9999);
-    console.log(idLeft);
 
     let response = {
         "nemId": idRight + idLeft

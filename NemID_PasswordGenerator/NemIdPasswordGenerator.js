@@ -1,9 +1,44 @@
-// 1. create a server that serves on http://localhost:8089/generate-password-nemID (end point)
-//  1.1 setup a server on localhost:8089 
-//  1.2 create an end point on /geneate-password-nemID
-// this end point will receive a JSON object.
-// you will have to open the information on "nemId" and "cpr"
-// with this information you will create a json object with the key 'nemIdPassword' and the value '2 digits from each'
-// and then send it back as a response with a statuscode 201
+// Steffen And Pratima
+const express = require('express');
+const sqlite3 = require('sqlite3');
+const bodyParser = require('body-parser');
+var app = express();
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use(express.json());
+
+app.post('/generate-password-nemID', (req, res) =>{
+    console.log("nemId: " + req.body.nemId);
+    console.log("CPR: " + req.body.cpr);
+
+    firstValue = req.body.nemId.slice(0,2);
+    lastValue = req.body.cpr.slice(1,3);
+    let generatedCode = {
+        "nemIdPassword": firstValue+lastValue
+    };
+
+    console.log("Generated code: " + generatedCode)
+    res.status(200).send(generatedCode);
+});
 
 
+
+//Test that server is up and running
+app.get('/test', (req, res) => {
+    res.status(200).send({ message: "Server is running just fine on port 8089... " })
+});
+
+app.listen(8089, (err) => {
+    if (err) {
+        console.log(err);
+    }
+    else {
+        console.log("Listening on port 8089");
+    }
+});
+
+
+// nodemon /Users/phillipeismark/Documents/SystemIntegration/si_mandatory_assignment_1/NemID_PasswordGenerator/NemIdPasswordGenerator.js

@@ -23,9 +23,9 @@ app.post('/nemId', xmlparser({trim: false, explicitArray: false}), async(req, re
     let nemId = '';
     axios.post('http://localhost:8088/generate-nemId', {cpr: cpr, email: email}).then(response =>{
         nemId = response.data.nemId;
-        axios.post('http://localhost:8089/generate-password-nemID', {nemId: nemId, cpr:cpr}).then(re => {
-            let query = "INSERT INTO user(CPR, NemID, Password) VALUES(?,?,?)";
-            db.run(query, [cpr, nemId, re.data.nemIdPassword], (err) =>{
+         axios.post('http://localhost:8089/generate-password-nemID', {nemId: nemId, cpr:cpr}).then(re => {
+             let query = "INSERT INTO user(CPR, NemID, Password) VALUES(?,?,?)";
+             db.run(query, [cpr, nemId, re.data.nemIdPassword], (err) =>{
         if(err){
             console.log(err);
         }
@@ -80,3 +80,5 @@ app.listen(8080, (err) => {
         console.log("ESB is configured...");
     }
 });
+
+// nodemon /Users/phillipeismark/Documents/SystemIntegration/si_mandatory_assignment_1/NemID_ESB/esb_mock.js

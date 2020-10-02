@@ -40,7 +40,7 @@ while True:
         add_people(f_name, l_name, email, phone, date_of_birth, address, country)
         inp = input("Add another one? ")
     else:
-        with open("../Main_System/people.csv", "w", newline='') as csv_file:
+        with open("/Users/phillipeismark/Documents/SystemIntegration/si_mandatory_assignment_1/Main_System/people.csv", "w", newline='') as csv_file:
             writer = csv.writer(csv_file)
             writer.writerow(['FirstName', 'LastName', 'Email', 'DateOfBirth', 'Phone', 'Address', 'Country'])
             for p in peopleToAdd:

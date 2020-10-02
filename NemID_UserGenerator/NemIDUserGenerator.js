@@ -27,6 +27,7 @@ app.get('/test', (req, res) => {
 
 // send back a nemId from last 4 of cpr and 4 random numbers
 app.post('/generate-nemId', (req,res) => {  
+    console.log("***** NEW REQUEST *****")
     body = JSON.stringify(req.body);
     console.log("recieved POST on /generate-nemId");
 
@@ -36,9 +37,12 @@ app.post('/generate-nemId', (req,res) => {
     let response = {
         "nemId": idRight + idLeft
     }
+
+    console.log('sending response: ', response)
     res.status(201).send(response);
 });
 
+// start the server
 app.listen(PORT, (err) => {
     if(err){
         console.log(err)

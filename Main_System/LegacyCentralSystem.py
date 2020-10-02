@@ -61,9 +61,8 @@ class LegacyCentralSystem(object):
 # send the xml object to the nemID service to get a nemId
     @classmethod
     def retrieve_nemId(self, xmlPerson):
+        print('sending post request to: ', LegacyCentralSystem().server_url, 'with: ', xmlPerson)
         nemId = requests.post('http://localhost:8080/nemId',xmlPerson)
-        print('sending post request to: ', LegacyCentralSystem().server_url)
-        print(nemId)
 
 
 # serialize json and save as msgpack with returned nemid

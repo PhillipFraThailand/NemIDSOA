@@ -19,7 +19,6 @@ app.post('/nemid-auth', async (req, res) => {
 
     let nemIdCode = req.body.nemIdCode;
     let nemId = req.body.nemId;
-
     let generatedCode = Math.floor(Math.random() * 900000) + 100000;
 
     

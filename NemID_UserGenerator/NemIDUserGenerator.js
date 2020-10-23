@@ -28,8 +28,8 @@ app.get('/test', (req, res) => {
 // send back a nemId from last 4 of cpr and 4 random numbers
 app.post('/generate-nemId', (req,res) => {  
     console.log("***** NEW REQUEST *****")
-    body = JSON.stringify(req.body);
     console.log("recieved POST on /generate-nemId");
+    body = JSON.stringify(req.body);
 
     idRight = req.body.cpr.slice(7,11);
     idLeft = generateRandom(1000,9999);
@@ -58,6 +58,5 @@ function generateRandom (min, max) {
         )
 }
 
-// To run i need the absolute path for some reason. Also even if PWD shows the exact same path it will not work without it.
 // node /Users/phillipeismark/Documents/SystemIntegration/si_mandatory_assignment_1/NemID_UserGenerator/NemIDUserGenerator.js
 // nodemon /Users/phillipeismark/Documents/SystemIntegration/si_mandatory_assignment_1/NemID_UserGenerator/NemIDUserGenerator.js

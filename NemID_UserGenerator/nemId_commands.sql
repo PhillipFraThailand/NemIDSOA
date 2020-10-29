@@ -1,0 +1,19 @@
+CREATE TABLE [Gender](
+    [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    [Label] TEXT NOT NULL
+);
+
+CREATE TABLE [User] (
+    [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    [Email] TEXT NOT NULL,
+    [Cpr] TEXT NOT NULL,
+    [NemId] Text NOT NULL,
+    [GenderId] INTEGER NOT NULL,
+    FOREIGN KEY([GenderId]) REFERENCES [Gender](Id)
+);
+
+CREATE TABLE [Password] (
+    [Id] INTEGER NOT NULL PRIMARY KEY,
+    [isActive] TEXT NOT NULL,
+    FOREIGN KEY([Id]) REFERENCES [User](Id)
+);
